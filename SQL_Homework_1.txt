@@ -1,0 +1,45 @@
+﻿
+
+
+All following exercise have been solved using SQL in postgres/pgadmin
+
+Q3
+
+1. Between 0 and 1 mile:
+
+SELECT COUNT(*) AS sum_mile
+FROM ny_taxi_data
+WHERE trip_distance >= 0 AND trip_distance <= 1;
+
+2. Between 1 and 3 miles:
+SELECT COUNT(*) AS sum_mile
+FROM ny_taxi_data
+WHERE trip_distance > 1 AND trip_distance <= 3;
+
+3. Between 3 and 7 miles:
+SELECT COUNT(*) AS sum_mile
+FROM ny_taxi_data
+WHERE trip_distance > 3 AND trip_distance <= 7;
+
+4. Between 7 and 10 miles:
+SELECT COUNT(*) AS sum_mile
+FROM ny_taxi_data
+WHERE trip_distance > 7 AND trip_distance <= 10;
+
+5. Over 10 miles:
+SELECT COUNT(*) AS sum_mile
+FROM ny_taxi_data
+WHERE trip_distance > 10;
+
+Q4
+
+SELECT * FROM public.ny_taxi_data
+Order BY trip_distance DESC;
+
+Q5
+
+SELECT "PULocationID", SUM(total_amount) AS trip_sum
+FROM ny_taxi_data
+WHERE DATE(lpep_pickup_datetime) = '2019-10-18'
+GROUP BY "PULocationID"
+Order BY trip_sum DESC;
